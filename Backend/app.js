@@ -19,6 +19,6 @@ app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
   //! Connecting to database
-  connectDB();
+  // connectDB();
   console.log(`Your site is live on http://localhost:${PORT}`);
 });
