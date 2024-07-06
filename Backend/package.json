@@ -1,0 +1,26 @@
+{
+  "name": "ecomm_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "timeout 5s node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo 'Your app is completely working 🌿👍🏻💖'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.19.2",
+    "mongoose": "^7.0.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "nodemon": "^3.1.4"
+  }
+}
