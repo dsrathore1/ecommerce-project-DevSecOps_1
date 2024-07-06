@@ -1,29 +1,24 @@
+const express = require("express");
+const cors = require("cors");
+const connectDB = require("./db/connect.js");
+const routes = require("./routes/routes.js");
+const productsRoutes = require("./routes/products.js");
+
 require("dotenv").config();
-const express =require("express");
-const app=express();
-const connectDB =require("./db/connect");
 
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-const PORT=process.env.PORT || 5000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
-const products_routes=require("./routes/products")
+//! middleware to set router
+app.use(routes);
+app.use("/api/products", productsRoutes);
 
-app.get("/",(req,res)=>{
-    res.send("hi i am live");
-})
-
-// middleware to set router
-app.use("/api/products",products_routes);
-
-const start=async ()=>{
-    try{
-        await connectDB();
-        app.listen(PORT,()=>{
-            console.log(`connected to port ${PORT}`);
-        })
-    }catch(error){
-        console.log(error);
-    }
-}
-
-start();
+app.listen(PORT, () => {
+  //! Connecting to database
+  connectDB();
+  console.log(`Your site is live on http://localhost:${PORT}`);
+});
