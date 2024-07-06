@@ -1,0 +1,29 @@
+name: Workflow for Ecommerce site - Production
+run-name: Workflow number ${{github.run_number}}
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  backend-job:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: ./Backend
+
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies & Testing the application
+        run: |
+          npm install
+          npm run start
+          npm run test
