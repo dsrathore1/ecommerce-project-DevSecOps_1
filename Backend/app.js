@@ -21,4 +21,9 @@ app.listen(PORT, () => {
   //! Connecting to database
   // connectDB();
   console.log(`Your site is live on http://localhost:${PORT}`);
+
+  //! Use this during Integration to check the application running
+  setTimeout(() => {
+    process.exit();
+  }, 3000);
 });
