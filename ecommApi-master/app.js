@@ -1,21 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./db/connect.js");
-const routes = require("./routes/routes.js");
-const productsRoutes = require("./routes/products.js");
+const connectDB = require("./db/connectDB.js");
+const mainRoutes = require("./routes/routes.js");
+const productRoutes = require("./routes/productRoutes.js");
 
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-//! middleware to set router
-app.use(routes);
-app.use("/api/products", productsRoutes);
+//! Middleware to set routes
+app.use(mainRoutes);
+app.use("/api/products", productRoutes);
 
 app.listen(PORT, () => {
   //! Connecting to database
